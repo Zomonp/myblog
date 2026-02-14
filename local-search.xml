@@ -8,7 +8,7 @@
     <link href="/myblog/2026/02/14/VNCTF-2026/"/>
     <url>/myblog/2026/02/14/VNCTF-2026/</url>
     
-    <content type="html"><![CDATA[<h1 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a><strong>Signin</strong></h1><p>审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’]</p><p>由GET体file传参进行文件包含（当file长度小等于20时）</p><p>于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;,<br> 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写出以下payload：?file&#x3D;data:,<?phpinfo();?></p><p><img src="/myblog/1.png" alt="图片描述"></p><p>![1](D:\My Blog\source_posts\VNCTF-2026\1.png)</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a><strong>Signin</strong></h1><p>审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’]</p><p>由GET体file传参进行文件包含（当file长度小等于20时）</p><p>于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;,<br> 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写出以下payload：?file&#x3D;data:,<?phpinfo();?></p><p><img src="/myblog/img/VNCTF_CTF2026/1.png" alt="图片描述"></p>]]></content>
     
     
     <categories>
