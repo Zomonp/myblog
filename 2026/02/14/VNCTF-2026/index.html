@@ -19,24 +19,34 @@
   <meta name="author" content="Zomon">
   <meta name="keywords" content="Zomon">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://zomonp.github.io/myblog/categories/index.html">
+    <meta name="description" content="Signin审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’] 由GET体file传参进行文件包含（当file长度小等于20时） 于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;, 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VNCTF 2026">
+<meta property="og:url" content="https://zomonp.github.io/myblog/2026/02/14/VNCTF-2026/index.html">
 <meta property="og:site_name" content="Zomon&#39;s Blog">
+<meta property="og:description" content="Signin审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’] 由GET体file传参进行文件包含（当file长度小等于20时） 于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;, 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-14T11:19:04.000Z">
+<meta property="article:modified_time" content="2026-02-14T11:20:13.377Z">
 <meta property="article:author" content="Zomon">
-<meta property="article:tag" content="Zomon">
+<meta property="article:tag" content="比赛">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>分类 - Zomon&#39;s Blog</title>
+  <title>VNCTF 2026 - Zomon&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -97,7 +107,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/myblog/">
@@ -203,9 +213,58 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="分类"></span>
+            <span id="subtitle" data-typed-text="VNCTF 2026"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-02-14 19:19" pubdate>
+          2026年2月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          264 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
 
         
       </div>
@@ -221,114 +280,187 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">VNCTF 2026</h1>
+            
+            
+              <div class="markdown-body">
                 
+                <h1 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a><strong>Signin</strong></h1><p>审视源码发现过滤了[‘&#x2F;‘, ‘convert’, ‘base’, ‘text’, ‘plain’]</p>
+<p>由GET体file传参进行文件包含（当file长度小等于20时）</p>
+<p>于是便可以用data协议进行文件上传包含，但是&#x2F;&#x2F;被ban，所以可以用短符号简写绕过：data;,<br> 然后，由于include具有解析上传文件的特性，能把上传的文件当作php代码识别，故可以写出以下payload：?file&#x3D;data:,<?phpinfo();?></p>
+<p>![图片1](&#x2F;img&#x2F;VNCTF 2026&#x2F;1.png)</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
 
-
-
-
-<div class="category-list">
+<span class="category-chains">
   
   
     
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="比赛wp"
-        id="heading-0ecb2a1571cff9fa0d15d886f5350f3f" role="tab" data-toggle="collapse" href="#collapse-0ecb2a1571cff9fa0d15d886f5350f3f"
-        aria-expanded="false"
-      >
-        比赛wp
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/myblog/categories/%E6%AF%94%E8%B5%9Bwp/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-0ecb2a1571cff9fa0d15d886f5350f3f"
-           role="tabpanel" aria-labelledby="heading-0ecb2a1571cff9fa0d15d886f5350f3f">
+      <span class="category-chain">
         
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/myblog/2026/02/14/VNCTF-2026/" title="VNCTF 2026"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">VNCTF 2026</span>
-        </a>
-      
-    
-  </div>
+  <a href="/myblog/categories/%E6%AF%94%E8%B5%9Bwp/" class="category-chain-item">比赛wp</a>
+  
+  
 
-        
-      </div>
+      </span>
+    
+  
+</span>
+
     </div>
   
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人网安日记"
-        id="heading-9183fa307fbe8c660adc14320054da43" role="tab" data-toggle="collapse" href="#collapse-9183fa307fbe8c660adc14320054da43"
-        aria-expanded="false"
-      >
-        个人网安日记
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-        <a href="/myblog/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E5%AE%89%E6%97%A5%E8%AE%B0/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
+        <a href="/myblog/tags/%E6%AF%94%E8%B5%9B/" class="print-no-link">#比赛</a>
       
-      <div class="category-collapse collapse " id="collapse-9183fa307fbe8c660adc14320054da43"
-           role="tabpanel" aria-labelledby="heading-9183fa307fbe8c660adc14320054da43">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/myblog/2025/11/09/Hello%20Guys!/" title="Hello Guys!"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Hello Guys!</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
     </div>
   
 </div>
 
 
-              </div>
-            </div>
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>VNCTF 2026</div>
+      <div>https://zomonp.github.io/myblog/2026/02/14/VNCTF-2026/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zomon</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年2月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/myblog/2025/11/09/Hello%20Guys!/" title="Hello Guys!">
+                        <span class="hidden-mobile">Hello Guys!</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -422,7 +554,102 @@
 
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
   <script  src="/myblog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
