@@ -835,27 +835,27 @@ i.iconfont {
 }
 :root {
   --color-mode: "light";
-  --body-bg-color: #eee;
-  --board-bg-color: #8CDAFC;
+  --body-bg-color: #83C3DE;
+  --board-bg-color: #83C3DE;
   --text-color: #3c4858;
   --sec-text-color: #718096;
   --post-text-color: #2c3e50;
   --post-heading-color: #1a202c;
   --post-link-color: #0366d6;
   --link-hover-color: #30a9de;
-  --link-hover-bg-color: #f8f9fa;
-  --line-color: #eaecef;
-  --navbar-bg-color: #8CDAFC;
+  --link-hover-bg-color: #83C3DE;
+  --line-color: #83C3DE;
+  --navbar-bg-color: #83C3DE;
   --navbar-text-color: #fff;
   --subtitle-color: #fff;
-  --scrollbar-color: #c4c6c9;
+  --scrollbar-color: #83C3DE;
   --scrollbar-hover-color: #a6a6a6;
   --button-bg-color: transparent;
   --button-hover-bg-color: #f2f3f5;
   --highlight-bg-color: #f6f8fa;
   --inlinecode-bg-color: rgba(175,184,193,0.2);
   --fold-title-color: #3c4858;
-  --fold-border-color: #eaecef;
+  --fold-border-color: #83C3DE;
 }
 @media (prefers-color-scheme: dark) {
   :root {
